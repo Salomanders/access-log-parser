@@ -6,10 +6,23 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Введите текст и нажмите <Enter>: ");
-        String text = new Scanner(System.in).nextLine();
-        System.out.println("Длина текста: " + text.length());
-        }
+        //Получение первого числа
+        System.out.println("Введите первое число: ");
+        int number1 = new Scanner(System.in) .nextInt();
+        //Получение второго числа
+        System.out.println("Введите второе число: ");
+        int number2 = new Scanner(System.in) .nextInt();
+        //Сложение
+        int sum = number1 + number2;
+        System.out.println("Сумма: " + sum);
+        //Вычитание
+        int subtraction = number1 - number2;
+        System.out.println("Вычитание: " + subtraction);
+        //Деление
+        double quotient = (double) number1 / number2;
+        System.out.println("Частное: " + quotient);
+        //Умножение
+        int multiplication = number1 * number2;
+        System.out.println("Произведение: " + multiplication);
     }
+}
