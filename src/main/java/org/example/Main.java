@@ -1,28 +1,39 @@
 package org.example;
 
+import java.io.File;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //Получение первого числа
-        System.out.println("Введите первое число: ");
-        int number1 = new Scanner(System.in) .nextInt();
-        //Получение второго числа
-        System.out.println("Введите второе число: ");
-        int number2 = new Scanner(System.in) .nextInt();
-        //Сложение
-        int sum = number1 + number2;
-        System.out.println("Сумма: " + sum);
-        //Вычитание
-        int subtraction = number1 - number2;
-        System.out.println("Вычитание: " + subtraction);
-        //Деление
-        double quotient = (double) number1 / number2;
-        System.out.println("Частное: " + quotient);
-        //Умножение
-        int multiplication = number1 * number2;
-        System.out.println("Произведение: " + multiplication);
+        Scanner scanner = new Scanner(System.in);
+        int fileCount = 0; // Счетчик корректных файлов
+
+        for (;;) {
+            System.out.print("Введите путь к файлу (или 'exit' для выхода): ");
+            String path = scanner.nextLine();
+
+            // Проверка на выход из цикла
+            if (path.equalsIgnoreCase("exit")) {
+                System.out.println("Программа завершена.");
+                break;
+            }
+
+            File file = new File(path);
+            boolean fileExists = file.exists();
+            boolean isFile = file.isFile();
+
+            if (!fileExists) {
+                System.out.println("Ошибка: указанный путь не существует. Попробуйте снова.");
+                continue;
+            }
+
+            if (!isFile) {
+                System.out.println("Ошибка: указанный путь ведёт к папке, а не к файлу. Попробуйте снова.");
+                continue;
+            }
+
+            fileCount++;
+            System.out.println("Путь указан верно. Это файл номер " + fileCount);
+        }
     }
 }
