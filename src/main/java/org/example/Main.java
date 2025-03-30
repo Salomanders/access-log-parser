@@ -8,7 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int fileCount = 0; // Счетчик корректных файлов
 
-        for (;;) {
+        while (true) {
             System.out.print("Введите путь к файлу (или 'exit' для выхода): ");
             String path = scanner.nextLine();
 
@@ -20,14 +20,14 @@ public class Main {
 
             File file = new File(path);
             boolean fileExists = file.exists();
-            boolean isFile = file.isFile();
+            boolean isDirectory = file.isDirectory();
 
             if (!fileExists) {
                 System.out.println("Ошибка: указанный путь не существует. Попробуйте снова.");
                 continue;
             }
 
-            if (!isFile) {
+            if (isDirectory) {
                 System.out.println("Ошибка: указанный путь ведёт к папке, а не к файлу. Попробуйте снова.");
                 continue;
             }
